@@ -1,0 +1,300 @@
+---
+import fs from 'node:fs';
+import Base from '../layouts/Base.astro';
+import themes from '../data/themes.json';
+
+const base = import.meta.env.BASE_URL;
+const trailer = 'ea3AvLVRcl8';
+const hasGame = fs.existsSync(new URL('../../public/game/index.html', import.meta.url));
+const hasShapeImages = fs.existsSync(new URL('../../public/images/shapes/box.png', import.meta.url));
+
+const screenshots = [
+  { src: 'carousel-solve.jpg', alt: 'Solve true 3D mazes' },
+  { src: 'carousel-everyday.jpg', alt: 'Every day, a new maze' },
+  { src: 'carousel-enjoy.jpg', alt: 'Enjoy the graphic themes' },
+  { src: 'carousel-train.jpg', alt: 'Train your brain' },
+];
+
+const features = [
+  { title: 'Really in 3D', text: 'Not a flat maze in a 3D world: the pipes run up, down and through the shape. Turn the camera around and find the way to the flag.' },
+  { title: 'A new free maze every day', text: 'The calendar hands out one fresh maze a day. Come back tomorrow for the next one, or replay any day you missed.' },
+  { title: 'Ten shapes', text: 'Flat, wall, shell, box, sphere, egg, pyramid, diamond, cross and axis. Each one bends the maze differently.' },
+  { title: 'Five sizes', text: 'From a mini maze you solve in a minute to the giant box that, so far, only the AI has cleared.' },
+  { title: '23 graphic themes', text: 'Neon, paper, blueprint, X-ray, candy, chocolate and a rack of retro consoles. Pick one and the whole maze repaints.' },
+  { title: 'Practice mode', text: 'Thousands of mazes, any shape and any size, to train your brain between the daily ones.' },
+];
+
+const shapes = [
+  { slug: 'flat', title: 'Flat', text: 'The classic, to warm up.' },
+  { slug: 'wall', title: 'Wall', text: 'Two layers back to back.' },
+  { slug: 'shell', title: 'Shell', text: 'Around the box, not through it.' },
+  { slug: 'box', title: 'Box', text: 'The full cube. The giant one is brutal.' },
+  { slug: 'sphere', title: 'Sphere', text: 'No corners to hold on to.' },
+  { slug: 'egg', title: 'Egg', text: 'A sphere with a bad side.' },
+  { slug: 'pyramid', title: 'Pyramid', text: 'Wide at the base, tight at the top.' },
+  { slug: 'diamond', title: 'Diamond', text: 'Two pyramids, point to point.' },
+  { slug: 'cross', title: 'Cross', text: 'Six arms around a core.' },
+  { slug: 'axis', title: 'Axis', text: 'Three bars through the centre.' },
+];
+
+const sizes = [
+  { title: 'Mini', text: 'a minute' },
+  { title: 'Small', text: 'a coffee break' },
+  { title: 'Medium', text: 'the daily one' },
+  { title: 'Large', text: 'an evening' },
+  { title: 'Giant', text: 'good luck' },
+];
+
+const controls = [
+  { action: 'Run along a pipe', touch: 'tap in the direction of the branch', mouse: 'click in the direction of the branch' },
+  { action: 'Turn the camera', touch: 'drag with one finger', mouse: 'left drag' },
+  { action: 'Zoom', touch: 'pinch', mouse: 'scroll wheel or right drag' },
+  { action: 'Change viewpoint', touch: 'double tap', mouse: 'double click' },
+  { action: 'Pause / menu', touch: 'menu button', mouse: 'menu button' },
+];
+
+const families = [...new Set(themes.map((t) => t.family))];
+
+const quotes = [
+  { author: 'FelixEnFeu', text: 'Windows 95 nostalgia!' },
+];
+
+const whatsNew = [
+  'rebuilt on Unity 6 for today\'s phones, tablets and browsers',
+  'plays in portrait or landscape',
+  'mouse controls: drag to turn, scroll or right drag to zoom',
+];
+
+const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+---
+
+<Base title="Pipe Maze 3D — solve mazes that are really in three dimensions">
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <img class="hero-logo" src={`${base}images/logo.png`} alt="Pipe Maze 3D" width="512" height="320" />
+        <p class="tagline">Are you good at mazes? Try one that is really in three dimensions. Run along the pipes of a box, a sphere or a pyramid, turn it around and find the flag. A new free maze every day.</p>
+        <div class="hero-actions">
+          {hasGame
+            ? <a class="btn btn-primary" href={`${base}play/`}>▶ Play free in your browser</a>
+            : <a class="btn btn-primary" href="#download">▶ Get the game</a>}
+          <a class="btn btn-blue" href={`https://www.youtube.com/watch?v=${trailer}`} target="_blank" rel="noopener">Watch the trailer</a>
+        </div>
+        <p class="muted small">Portrait or landscape, phone, tablet or desktop.</p>
+      </div>
+      <div class="hero-shot">
+        <img src={`${base}images/carousel-solve.jpg`} alt="A box maze made of green pipes on a blue background" width="480" loading="eager" />
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="section">
+    <div class="container">
+      <h2><span class="accent">▮</span>How it plays</h2>
+      <div class="grid grid-3">
+        {features.map((f) => (
+          <div class="card">
+            <h3>{f.title}</h3>
+            <p>{f.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="story" class="section story">
+    <div class="container story-inner">
+      <div>
+        <h2><span class="accent">▮</span>Insanely difficult, in a good way</h2>
+        <p>A flat maze has two directions to get lost in. These have three. The path folds behind the shape, climbs over it and comes back under your feet, so you have to keep a picture of the whole thing in your head while you turn it around.</p>
+        <p class="muted">So far, only an artificial intelligence has solved the giant box maze.</p>
+        {hasGame && <a class="btn" href={`${base}play/`}>Try a mini one</a>}
+      </div>
+      <div class="video">
+        <iframe src={`https://www.youtube-nocookie.com/embed/${trailer}?rel=0`} title="Pipe Maze 3D trailer" allow="autoplay; encrypted-media; fullscreen" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section id="shapes" class="section">
+    <div class="container">
+      <h2><span class="accent">▮</span>Ten shapes</h2>
+      <p class="muted">Every maze is generated on one of these shapes. The pipes follow the surface, or fill the volume, and the flag is always somewhere you did not expect.</p>
+      <ul class="shapes">
+        {shapes.map((s) => (
+          <li>
+            {hasShapeImages && <img src={`${base}images/shapes/${s.slug}.png`} alt={`${s.title} maze`} width="240" height="240" loading="lazy" />}
+            <strong>{s.title}</strong>
+            <span class="muted">{s.text}</span>
+          </li>
+        ))}
+      </ul>
+      <h3 class="sizes-title">Five sizes</h3>
+      <ul class="sizes">
+        {sizes.map((s, i) => (
+          <li style={`--n: ${i + 1}`}><i></i><strong>{s.title}</strong><span class="muted">{s.text}</span></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section id="themes" class="section">
+    <div class="container">
+      <h2><span class="accent">▮</span>Twenty-three themes</h2>
+      <p class="muted">Background, pipes, runner and flag, repainted at the tap of a button. The colours below are read straight from the game's theme files.</p>
+      {families.map((family) => (
+        <div class="family">
+          <h3>{family === 'Default' ? 'Original' : family === 'NextGen' ? 'Next gen' : family}</h3>
+          <ul class="themes">
+            {themes.filter((t) => t.family === family).map((t) => (
+              <li title={t.name}>
+                <div class="swatch" style={`background: linear-gradient(180deg, ${t.background[0]}, ${t.background[1]})`}>
+                  <span class="pipe" style={`background: ${t.pipe}`}></span>
+                  <span class="pipe pipe-2" style={`background: ${t.pipe}`}></span>
+                  <span class="ball" style={`background: ${t.player}`}></span>
+                  <span class="flag" style={`background: ${t.flag}`}></span>
+                </div>
+                <span>{t.name}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section id="how-to-play" class="section">
+    <div class="container">
+      <h2><span class="accent">▮</span>How to play</h2>
+      <div class="howto">
+        <div class="table-wrap">
+          <table class="controls">
+            <thead><tr><th></th><th>Touch</th><th>Mouse</th></tr></thead>
+            <tbody>
+              {controls.map((c) => (
+                <tr><th>{c.action}</th><td>{c.touch}</td><td>{c.mouse}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <ol class="steps">
+          <li><strong>Find the flag.</strong> Double tap to switch to the overview and turn the maze until you spot it.</li>
+          <li><strong>Plan the route.</strong> The pipes do not cross: every junction is a real choice.</li>
+          <li><strong>Run.</strong> Tap towards a branch and the runner rolls to the next junction. Dead end? Tap back.</li>
+          <li><strong>Beat the clock.</strong> Faster runs and fewer wrong turns earn up to three stars per maze.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2><span class="accent">▮</span>Screenshots</h2>
+      <div class="shots">
+        {screenshots.map((s) => <img src={`${base}images/${s.src}`} alt={s.alt} loading="lazy" width="320" />)}
+      </div>
+      <div class="quotes">
+        {quotes.map((q) => (
+          <blockquote>
+            <p>“{q.text}”</p>
+            <cite>— {q.author}</cite>
+          </blockquote>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="download" class="section">
+    <div class="container">
+      <h2><span class="accent">▮</span>Get the game</h2>
+      <div class="grid grid-3 download">
+        <div class="card highlight">
+          <h3>Browser</h3>
+          <p class="price">{hasGame ? 'Free' : 'Coming soon'}</p>
+          <p>{hasGame ? 'The complete game, right here. Nothing to install.' : 'The web version is being built with this release. It will play right here, nothing to install.'}</p>
+          {hasGame ? <a class="btn btn-primary" href={`${base}play/`}>Play now</a> : <a class="btn" href={`${base}play/`}>Check the play page</a>}
+        </div>
+        <div class="card">
+          <h3>Android</h3>
+          <p class="price">Coming back</p>
+          <p>The Google Play version is being refreshed with this release.</p>
+          <a class="btn btn-blue" href="https://play.google.com/store/apps/details?id=com.studiokurage.maze" target="_blank" rel="noopener">Google Play</a>
+        </div>
+        <div class="card">
+          <h3>iPhone &amp; iPad</h3>
+          <p class="price">Coming back</p>
+          <p>The App Store version is being refreshed with this release.</p>
+          <a class="btn btn-blue" href="https://apps.apple.com/app/pipe-maze-3d/id1257590197" target="_blank" rel="noopener">App Store</a>
+        </div>
+      </div>
+      <div class="whatsnew">
+        <h3>What's new in this release</h3>
+        <ul>{whatsNew.map((w) => <li>{w}</li>)}</ul>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero { padding: clamp(3rem, 8vw, 6rem) 0 clamp(2rem, 5vw, 4rem); background: radial-gradient(ellipse at 20% 0%, rgba(47, 156, 255, 0.22), transparent 55%), radial-gradient(ellipse at 90% 100%, rgba(60, 240, 74, 0.14), transparent 55%); }
+  .hero-inner { display: grid; gap: 2.5rem; align-items: center; }
+  @media (min-width: 860px) { .hero-inner { grid-template-columns: 1.2fr 0.8fr; } }
+  .hero-logo { width: min(100%, 460px); height: auto; margin-left: -2%; filter: drop-shadow(0 0 28px rgba(47, 156, 255, 0.35)); }
+  .tagline { font-size: clamp(1.1rem, 2vw, 1.35rem); color: var(--text); max-width: 34em; margin-top: 1.2rem; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 0.8rem; margin: 1.4rem 0 0.8rem; }
+  .small { font-size: 0.9rem; }
+  .hero-shot img { width: min(100%, 400px); margin: 0 auto; border-radius: 26px; border: 1px solid var(--line); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55); }
+
+  .story-inner { display: grid; gap: 2rem; align-items: center; }
+  @media (min-width: 860px) { .story-inner { grid-template-columns: 1fr 1.1fr; } }
+  .video { position: relative; aspect-ratio: 16 / 9; border-radius: 16px; overflow: hidden; border: 1px solid var(--line); background: #000; }
+  .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+  .shapes { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 0.9rem; }
+  .shapes li { display: flex; flex-direction: column; gap: 0.15rem; background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 0.9rem; font-size: 0.85rem; }
+  .shapes img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 10px; margin-bottom: 0.5rem; background: #0a1d5c; }
+  .shapes strong { color: var(--text); }
+  .sizes-title { margin-top: 2.5rem; font-size: 1.1rem; }
+  .sizes { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.9rem; align-items: end; }
+  .sizes li { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; font-size: 0.85rem; text-align: center; }
+  .sizes i { display: block; width: calc(24px + var(--n) * 14px); height: calc(24px + var(--n) * 14px); border-radius: 8px; border: 3px solid var(--green); box-shadow: inset 0 0 0 2px var(--bg), inset 0 0 0 5px rgba(60, 240, 74, 0.35); margin-bottom: 0.3rem; }
+  .sizes strong { color: var(--text); }
+
+  .family { margin-top: 1.6rem; }
+  .family h3 { font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.6rem; }
+  .themes { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 0.8rem; }
+  .themes li { display: flex; flex-direction: column; gap: 0.35rem; align-items: center; font-size: 0.8rem; color: var(--muted); }
+  .swatch { position: relative; width: 100%; aspect-ratio: 1; border-radius: 12px; border: 1px solid var(--line); overflow: hidden; }
+  .swatch .pipe { position: absolute; left: 14%; right: 14%; top: 34%; height: 12%; border-radius: 999px; box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.35); }
+  .swatch .pipe-2 { top: 60%; left: 40%; right: 14%; }
+  .swatch .ball { position: absolute; width: 20%; aspect-ratio: 1; border-radius: 50%; left: 18%; top: 30%; box-shadow: inset -3px -3px 0 rgba(0, 0, 0, 0.35); }
+  .swatch .flag { position: absolute; width: 16%; height: 12%; right: 12%; top: 46%; clip-path: polygon(0 0, 100% 50%, 0 100%); }
+
+  .howto { display: grid; gap: 2rem; align-items: start; }
+  @media (min-width: 860px) { .howto { grid-template-columns: 1.1fr 1fr; } }
+  .table-wrap { width: 100%; overflow-x: auto; }
+  .controls { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+  .controls th, .controls td { text-align: left; padding: 0.7rem 0.6rem; overflow-wrap: anywhere; border-bottom: 1px solid var(--line); vertical-align: middle; }
+  .controls thead th { color: var(--muted); font-weight: 600; font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; }
+  .controls tbody th { color: var(--text); font-weight: 600; }
+  .controls td { color: var(--muted); }
+  .steps { margin: 0; padding-left: 1.3em; display: grid; gap: 0.8rem; color: var(--muted); }
+  .steps strong { color: var(--text); }
+
+  .shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+  .shots img { width: 100%; border-radius: 16px; border: 1px solid var(--line); }
+  .quotes { display: grid; gap: 1rem; }
+  @media (min-width: 720px) { .quotes { grid-template-columns: 1fr 1fr; } }
+  .quotes blockquote { margin: 0; background: var(--panel); border: 1px solid var(--line); border-left: 3px solid var(--green); border-radius: 12px; padding: 1rem 1.2rem; }
+  .quotes p { margin: 0 0 0.4em; }
+  .quotes cite { color: var(--muted); font-style: normal; font-size: 0.9rem; }
+
+  .download .card { display: flex; flex-direction: column; gap: 0.6rem; }
+  .download .card .btn { margin-top: auto; align-self: flex-start; }
+  .download .price { color: var(--blue); font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; font-size: 0.8rem; }
+  .download .highlight { border-color: rgba(60, 240, 74, 0.5); box-shadow: 0 0 40px rgba(60, 240, 74, 0.1); }
+  .download .highlight .price { color: var(--green); }
+  .whatsnew { margin-top: 2rem; background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 1.2rem 1.4rem; }
+  .whatsnew h3 { font-size: 1rem; margin-bottom: 0.5em; }
+  .whatsnew ul { margin: 0; padding-left: 1.2em; color: var(--muted); }
+</style>

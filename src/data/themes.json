@@ -1,0 +1,255 @@
+[
+  {
+    "name": "Default",
+    "family": "Default",
+    "background": [
+      "#200000",
+      "#000000"
+    ],
+    "pipe": "#3cff1f",
+    "player": "#ff3d1f",
+    "flag": "#ff3d1f"
+  },
+  {
+    "name": "Air",
+    "family": "Elemental",
+    "background": [
+      "#2c222d",
+      "#2c222d"
+    ],
+    "pipe": "#effcff",
+    "player": "#d0d0d0",
+    "flag": "#d0d0d0"
+  },
+  {
+    "name": "Earth",
+    "family": "Elemental",
+    "background": [
+      "#2e2302",
+      "#2e2302"
+    ],
+    "pipe": "#76bf2f",
+    "player": "#f0be49",
+    "flag": "#f0be49"
+  },
+  {
+    "name": "Fire",
+    "family": "Elemental",
+    "background": [
+      "#861c06",
+      "#380a00"
+    ],
+    "pipe": "#c9100a",
+    "player": "#fca318",
+    "flag": "#fca318"
+  },
+  {
+    "name": "Water",
+    "family": "Elemental",
+    "background": [
+      "#1369f0",
+      "#123a9a"
+    ],
+    "pipe": "#006b9a",
+    "player": "#ffd2a9",
+    "flag": "#ffd2a9"
+  },
+  {
+    "name": "Candy",
+    "family": "Food",
+    "background": [
+      "#000000",
+      "#000000"
+    ],
+    "pipe": "#f2266e",
+    "player": "#f87da8",
+    "flag": "#ffffff"
+  },
+  {
+    "name": "Chocolate",
+    "family": "Food",
+    "background": [
+      "#421900",
+      "#240e00"
+    ],
+    "pipe": "#90522d",
+    "player": "#ffcc81",
+    "flag": "#d9a181"
+  },
+  {
+    "name": "D-Kong",
+    "family": "Game",
+    "background": [
+      "#004765",
+      "#004765"
+    ],
+    "pipe": "#000000",
+    "player": "#fe0100",
+    "flag": "#fc47a9"
+  },
+  {
+    "name": "M-Io",
+    "family": "Game",
+    "background": [
+      "#000656",
+      "#000000"
+    ],
+    "pipe": "#3cff1f",
+    "player": "#ff3d1f",
+    "flag": "#ff3d1f"
+  },
+  {
+    "name": "P-Man",
+    "family": "Game",
+    "background": [
+      "#000656",
+      "#000000"
+    ],
+    "pipe": "#000000",
+    "player": "#f4f400",
+    "flag": "#ffa580"
+  },
+  {
+    "name": "Blue",
+    "family": "NextGen",
+    "background": [
+      "#d0e000",
+      "#e03c00"
+    ],
+    "pipe": "#1866ac",
+    "player": "#a71700",
+    "flag": "#e03c00"
+  },
+  {
+    "name": "Green",
+    "family": "NextGen",
+    "background": [
+      "#00caff",
+      "#006bff"
+    ],
+    "pipe": "#008020",
+    "player": "#800000",
+    "flag": "#ff0000"
+  },
+  {
+    "name": "Metal",
+    "family": "NextGen",
+    "background": [
+      "#200000",
+      "#000000"
+    ],
+    "pipe": "#606060",
+    "player": "#808080",
+    "flag": "#ffffff"
+  },
+  {
+    "name": "Red",
+    "family": "NextGen",
+    "background": [
+      "#54a3bd",
+      "#056180"
+    ],
+    "pipe": "#800000",
+    "player": "#ff8020",
+    "flag": "#fdb813"
+  },
+  {
+    "name": "Yellow",
+    "family": "NextGen",
+    "background": [
+      "#1369f0",
+      "#123a9a"
+    ],
+    "pipe": "#a08000",
+    "player": "#a71700",
+    "flag": "#fe3b1d"
+  },
+  {
+    "name": "Blueprint",
+    "family": "Paper",
+    "background": [
+      "#2f9cff",
+      "#0062d4"
+    ],
+    "pipe": "#0062d4",
+    "player": "#2f9cff",
+    "flag": "#ffffff"
+  },
+  {
+    "name": "Paperwhite",
+    "family": "Paper",
+    "background": [
+      "#ffffff",
+      "#ffffff"
+    ],
+    "pipe": "#ffffff",
+    "player": "#000000",
+    "flag": "#000000"
+  },
+  {
+    "name": "Parchment",
+    "family": "Paper",
+    "background": [
+      "#ffcc81",
+      "#bc812c"
+    ],
+    "pipe": "#ffcc81",
+    "player": "#90522d",
+    "flag": "#90522d"
+  },
+  {
+    "name": "X-Ray",
+    "family": "Paper",
+    "background": [
+      "#000000",
+      "#000000"
+    ],
+    "pipe": "#000000",
+    "player": "#ffffff",
+    "flag": "#ffffff"
+  },
+  {
+    "name": "G-Boy",
+    "family": "Retro",
+    "background": [
+      "#c5cea3",
+      "#c5cea3"
+    ],
+    "pipe": "#8b946f",
+    "player": "#4d543d",
+    "flag": "#4d543d"
+  },
+  {
+    "name": "G-Watch",
+    "family": "Retro",
+    "background": [
+      "#ffffff",
+      "#e0e0d0"
+    ],
+    "pipe": "#002000",
+    "player": "#f04800",
+    "flag": "#38b028"
+  },
+  {
+    "name": "V-Boy",
+    "family": "Retro",
+    "background": [
+      "#000000",
+      "#000000"
+    ],
+    "pipe": "#fb291c",
+    "player": "#ce5e5f",
+    "flag": "#ce5e5f"
+  },
+  {
+    "name": "W-Swan",
+    "family": "Retro",
+    "background": [
+      "#a4a4a4",
+      "#a4a4a4"
+    ],
+    "pipe": "#858585",
+    "player": "#bdbdbd",
+    "flag": "#494949"
+  }
+]
