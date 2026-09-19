@@ -3,12 +3,12 @@
     "name": "Default",
     "family": "Default",
     "background": [
-      "#200000",
-      "#000000"
+      "#1e3329",
+      "#06160f"
     ],
-    "pipe": "#3cff1f",
-    "player": "#ff3d1f",
-    "flag": "#ff3d1f"
+    "pipe": "#7fa894",
+    "player": "#f2d06b",
+    "flag": "#e8654e"
   },
   {
     "name": "Air",
@@ -251,5 +251,49 @@
     "pipe": "#858585",
     "player": "#bdbdbd",
     "flag": "#494949"
+  },
+  {
+    "name": "Cavern",
+    "family": "Scenery",
+    "background": [
+      "#2e3742",
+      "#151f2d"
+    ],
+    "pipe": "#c69a72",
+    "player": "#ffe9a0",
+    "flag": "#d4472f"
+  },
+  {
+    "name": "Jungle",
+    "family": "Scenery",
+    "background": [
+      "#1e3329",
+      "#06160f"
+    ],
+    "pipe": "#7fa894",
+    "player": "#f2d06b",
+    "flag": "#e8654e"
+  },
+  {
+    "name": "Lagoon",
+    "family": "Scenery",
+    "background": [
+      "#5ca29c",
+      "#325fa3"
+    ],
+    "pipe": "#4c4c53",
+    "player": "#ee7672",
+    "flag": "#f8d1a5"
+  },
+  {
+    "name": "Twilight",
+    "family": "Scenery",
+    "background": [
+      "#aa7db7",
+      "#4852a5"
+    ],
+    "pipe": "#4f5c64",
+    "player": "#eba551",
+    "flag": "#ffe9a8"
   }
 ]

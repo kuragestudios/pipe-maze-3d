@@ -5,6 +5,8 @@ import themes from '../data/themes.json';
 
 const base = import.meta.env.BASE_URL;
 const trailer = 'ea3AvLVRcl8';
+const itch = 'https://kuragestudios.itch.io/pipe-maze-3d';
+const play = 'https://play.google.com/store/apps/details?id=com.studiokurage.maze';
 const hasGame = fs.existsSync(new URL('../../public/game/index.html', import.meta.url));
 const hasShapeImages = fs.existsSync(new URL('../../public/images/shapes/box.png', import.meta.url));
 
@@ -20,7 +22,8 @@ const features = [
   { title: 'A new free maze every day', text: 'The calendar hands out one fresh maze a day. Come back tomorrow for the next one, or replay any day you missed.' },
   { title: 'Ten shapes', text: 'Flat, wall, shell, box, sphere, egg, pyramid, diamond, cross and axis. Each one bends the maze differently.' },
   { title: 'Five sizes', text: 'From a mini maze you solve in a minute to the giant box that, so far, only the AI has cleared.' },
-  { title: '23 graphic themes', text: 'Neon, paper, blueprint, X-ray, candy, chocolate and a rack of retro consoles. Pick one and the whole maze repaints.' },
+  { title: '27 graphic themes', text: 'Neon, paper, blueprint, X-ray, candy, chocolate, four new sceneries and a rack of retro consoles. Pick one and the whole maze repaints.' },
+  { title: 'Plays with the keyboard', text: 'Arrows or WASD to run, shift and a direction to turn the maze, Q and E to zoom, tab to switch viewpoint. No mouse needed.' },
   { title: 'Practice mode', text: 'Thousands of mazes, any shape and any size, to train your brain between the daily ones.' },
 ];
 
@@ -46,11 +49,11 @@ const sizes = [
 ];
 
 const controls = [
-  { action: 'Run along a pipe', touch: 'tap in the direction of the branch', mouse: 'click in the direction of the branch' },
-  { action: 'Turn the camera', touch: 'drag with one finger', mouse: 'left drag' },
-  { action: 'Zoom', touch: 'pinch', mouse: 'scroll wheel or right drag' },
-  { action: 'Change viewpoint', touch: 'double tap', mouse: 'double click' },
-  { action: 'Pause / menu', touch: 'menu button', mouse: 'menu button' },
+  { action: 'Run along a pipe', touch: 'tap in the direction of the branch', mouse: 'click in the direction of the branch', keyboard: 'arrows or WASD' },
+  { action: 'Turn the camera', touch: 'drag with one finger', mouse: 'left drag', keyboard: 'shift + arrows or WASD' },
+  { action: 'Zoom', touch: 'pinch', mouse: 'scroll wheel or right drag', keyboard: 'Q and E, or + and −' },
+  { action: 'Change viewpoint', touch: 'double tap', mouse: 'double click', keyboard: 'tab' },
+  { action: 'Pause / menu', touch: 'menu button', mouse: 'menu button', keyboard: 'escape' },
 ];
 
 const families = [...new Set(themes.map((t) => t.family))];
@@ -63,6 +66,8 @@ const whatsNew = [
   'rebuilt on Unity 6 for today\'s phones, tablets and browsers',
   'plays in portrait or landscape',
   'mouse controls: drag to turn, scroll or right drag to zoom',
+  'full keyboard controls: arrows or WASD to run, shift to turn the maze, Q and E to zoom',
+  'four new Scenery themes: Cavern, Jungle, Lagoon and Twilight',
 ];
 
 const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-');
@@ -76,11 +81,11 @@ const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-');
         <p class="tagline">Are you good at mazes? Try one that is really in three dimensions. Run along the pipes of a box, a sphere or a pyramid, turn it around and find the flag. A new free maze every day.</p>
         <div class="hero-actions">
           {hasGame
-            ? <a class="btn btn-primary" href={`${base}play/`}>▶ Play free in your browser</a>
+            ? <a class="btn btn-primary" href={`${base}play/`}>▶ Play the free version</a>
             : <a class="btn btn-primary" href="#download">▶ Get the game</a>}
-          <a class="btn btn-blue" href={`https://www.youtube.com/watch?v=${trailer}`} target="_blank" rel="noopener">Watch the trailer</a>
+          <a class="btn btn-blue" href={itch} target="_blank" rel="noopener">♥ Get the full game</a>
         </div>
-        <p class="muted small">Portrait or landscape, phone, tablet or desktop.</p>
+        <p class="muted small">The free version runs in your browser — no install, no account. The full game is on Windows, Mac and Android. Portrait or landscape, phone, tablet or desktop.</p>
       </div>
       <div class="hero-shot">
         <img src={`${base}images/carousel-solve.jpg`} alt="A box maze made of green pipes on a blue background" width="480" loading="eager" />
@@ -109,6 +114,7 @@ const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-');
         <p>A flat maze has two directions to get lost in. These have three. The path folds behind the shape, climbs over it and comes back under your feet, so you have to keep a picture of the whole thing in your head while you turn it around.</p>
         <p class="muted">So far, only an artificial intelligence has solved the giant box maze.</p>
         {hasGame && <a class="btn" href={`${base}play/`}>Try a mini one</a>}
+        <a class="btn btn-blue" href="#download">Get the full game</a>
       </div>
       <div class="video">
         <iframe src={`https://www.youtube-nocookie.com/embed/${trailer}?rel=0`} title="Pipe Maze 3D trailer" allow="autoplay; encrypted-media; fullscreen" allowfullscreen loading="lazy"></iframe>
@@ -140,8 +146,8 @@ const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 
   <section id="themes" class="section">
     <div class="container">
-      <h2><span class="accent">▮</span>Twenty-three themes</h2>
-      <p class="muted">Background, pipes, runner and flag, repainted at the tap of a button. The colours below are read straight from the game's theme files.</p>
+      <h2><span class="accent">▮</span>Twenty-seven themes</h2>
+      <p class="muted">Background, pipes, runner and flag, repainted at the tap of a button. Four new sceneries in this release: Cavern, Jungle, Lagoon and Twilight. The colours below are read straight from the game's theme files.</p>
       {families.map((family) => (
         <div class="family">
           <h3>{family === 'Default' ? 'Original' : family === 'NextGen' ? 'Next gen' : family}</h3>
@@ -169,18 +175,18 @@ const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-');
       <div class="howto">
         <div class="table-wrap">
           <table class="controls">
-            <thead><tr><th></th><th>Touch</th><th>Mouse</th></tr></thead>
+            <thead><tr><th></th><th>Touch</th><th>Mouse</th><th>Keyboard</th></tr></thead>
             <tbody>
               {controls.map((c) => (
-                <tr><th>{c.action}</th><td>{c.touch}</td><td>{c.mouse}</td></tr>
+                <tr><th>{c.action}</th><td>{c.touch}</td><td>{c.mouse}</td><td>{c.keyboard}</td></tr>
               ))}
             </tbody>
           </table>
         </div>
         <ol class="steps">
-          <li><strong>Find the flag.</strong> Double tap to switch to the overview and turn the maze until you spot it.</li>
+          <li><strong>Find the flag.</strong> Double tap, or press tab, to switch to the overview and turn the maze until you spot it.</li>
           <li><strong>Plan the route.</strong> The pipes do not cross: every junction is a real choice.</li>
-          <li><strong>Run.</strong> Tap towards a branch and the runner rolls to the next junction. Dead end? Tap back.</li>
+          <li><strong>Run.</strong> Tap towards a branch, or press the arrow that points at it, and the runner rolls to the next junction. Dead end? Go back.</li>
           <li><strong>Beat the clock.</strong> Faster runs and fewer wrong turns earn up to three stars per maze.</li>
         </ol>
       </div>
@@ -206,25 +212,25 @@ const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 
   <section id="download" class="section">
     <div class="container">
-      <h2><span class="accent">▮</span>Get the game</h2>
+      <h2><span class="accent">▮</span>Free Version, Or The Full Game</h2>
       <div class="grid grid-3 download">
-        <div class="card highlight">
+        <div class="card">
           <h3>Browser</h3>
-          <p class="price">{hasGame ? 'Free' : 'Coming soon'}</p>
-          <p>{hasGame ? 'The complete game, right here. Nothing to install.' : 'The web version is being built with this release. It will play right here, nothing to install.'}</p>
+          <p class="price">{hasGame ? 'Free version' : 'Coming soon'}</p>
+          <p>{hasGame ? 'A first set of mazes, right here. Nothing to install.' : 'The free web version is being built with this release. It will play right here, nothing to install.'}</p>
           {hasGame ? <a class="btn btn-primary" href={`${base}play/`}>Play now</a> : <a class="btn" href={`${base}play/`}>Check the play page</a>}
+        </div>
+        <div class="card highlight">
+          <h3>Mac &amp; Windows</h3>
+          <p class="price">Full game</p>
+          <p>Every maze, the daily calendar and all 27 themes, offline, full screen, any window size.</p>
+          <a class="btn btn-primary" href={itch} target="_blank" rel="noopener">Buy on itch.io</a>
         </div>
         <div class="card">
           <h3>Android</h3>
-          <p class="price">Coming back</p>
-          <p>The Google Play version is being refreshed with this release.</p>
-          <a class="btn btn-blue" href="https://play.google.com/store/apps/details?id=com.studiokurage.maze" target="_blank" rel="noopener">Google Play</a>
-        </div>
-        <div class="card">
-          <h3>iPhone &amp; iPad</h3>
-          <p class="price">Coming back</p>
-          <p>The App Store version is being refreshed with this release.</p>
-          <a class="btn btn-blue" href="https://apps.apple.com/app/pipe-maze-3d/id1257590197" target="_blank" rel="noopener">App Store</a>
+          <p class="price">Free, unlock in app</p>
+          <p>Play for free on your phone, then unlock every maze and every theme with a single purchase.</p>
+          <a class="btn btn-blue" href={play} target="_blank" rel="noopener">Google Play</a>
         </div>
       </div>
       <div class="whatsnew">

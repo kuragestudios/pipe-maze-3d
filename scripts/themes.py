@@ -20,7 +20,7 @@ PROJECT = Path(sys.argv[1]) if len(sys.argv) > 1 else Path.home() / "ghq/github.
 THEMES = PROJECT / "Assets/App/Assets/Themes"
 OUT = SITE / "src/data/themes.json"
 
-ORDER = ["Default", "Elemental", "Food", "Game", "NextGen", "Paper", "Retro"]
+ORDER = ["Default", "Elemental", "Food", "Game", "NextGen", "Paper", "Retro", "Scenery"]
 
 
 def hex_color(text, key):
